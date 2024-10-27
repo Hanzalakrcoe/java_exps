@@ -1,0 +1,190 @@
+Aim:
+To implement a client-server communication system using Java Sockets to demonstrate networking concepts such as creating a connection between two systems for data transfer.
+Theory:
+Java provides the java.net package for implementing networking applications. The most commonly used classes are Socket and ServerSocket. A socket provides a two-way communication link between two programs running on the network. A ServerSocket waits for incoming connections, and the Socket class is used for both the client and server to send and receive data.
+In this experiment, we will create a server that listens on a specific port and a client that connects to the server, sends a message, and receives a response.
+Pre-Lab Questions:
+1.	What are the main classes used in Java for creating a network connection?
+2.	What is the difference between Socket and ServerSocket in Java networking?
+Post-Lab Questions:
+1.	Modify the client-server program so that the server sends the current date and time when requested by the client.
+2.	Write a program where the client sends its name to the server, and the server responds with a greeting message using the client's name.
+EXP CODE: 
+Server Code:
+// Name: Md. Hanzala Khan
+// UIN: 231P058
+// Server.java
+import java.io.*;
+import java.net.*;
+
+public class Server {
+    public static void main(String[] args) {
+        try {
+            // Create a server socket that listens on port 8080
+            ServerSocket serverSocket = new ServerSocket(8080);
+            System.out.println("Server is running and waiting for a client...");
+
+            // Accept the client connection
+            Socket socket = serverSocket.accept();
+            System.out.println("Client connected!");
+
+            // Set up input and output streams
+            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+
+            // Read a message from the client
+            String clientMessage = in.readLine();
+            System.out.println("Received from client: " + clientMessage);
+
+            // Send a response to the client
+            out.println("Hello, Client! Message received: " + clientMessage);
+
+            // Close resources
+            in.close();
+            out.close();
+            socket.close();
+            serverSocket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+Client Code:
+// Name: Khan Maaroof Nahid
+// UIN: 231P059
+// Client.java
+import java.io.*;
+import java.net.*;
+
+public class Client {
+    public static void main(String[] args) {
+        try {
+            // Connect to the server on localhost at port 8080
+            Socket socket = new Socket("localhost", 8080);
+
+            // Set up input and output streams
+            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+
+            // Send a message to the server
+            out.println("Hello, Server!");
+
+            // Read the response from the server
+            String serverMessage = in.readLine();
+            System.out.println("Received from server: " + serverMessage);
+
+            // Close resources
+            in.close();
+            out.close();
+            socket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+EXP15PL1: 
+// Name: Md. Hanzala Khan
+// UIN: 231P058
+// Server.java
+import java.io.*;
+import java.net.*;
+import java.time.LocalDateTime;
+
+public class Server {
+    public static void main(String[] args) {
+        try {
+            ServerSocket serverSocket = new ServerSocket(8080);
+            System.out.println("Server is running...");
+
+            Socket socket = serverSocket.accept();
+            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+
+            // Send current date and time to client
+            out.println("Current Date and Time: " + LocalDateTime.now());
+
+            socket.close();
+            serverSocket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+// Client.java
+// Name: Md. Hanzala Khan
+// UIN: 231P058
+import java.io.*;
+import java.net.*;
+
+public class Client {
+    public static void main(String[] args) {
+        try {
+            Socket socket = new Socket("localhost", 8080);
+            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+
+            // Read and print the response from the server
+            System.out.println(in.readLine());
+
+            socket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+EXP15PL2: 
+// Name: Md. Hanzala Khan
+// UIN: 231P0598
+// Server.java
+import java.io.*;
+import java.net.*;
+
+public class Server {
+    public static void main(String[] args) {
+        try {
+            ServerSocket serverSocket = new ServerSocket(8080);
+            System.out.println("Server is running...");
+
+            Socket socket = serverSocket.accept();
+            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+
+            // Read client name and send greeting
+            String clientName = in.readLine();
+            out.println("Hello, " + clientName + "! Welcome to the server.");
+
+            socket.close();
+            serverSocket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+// Name: Md. Hanzala Khan
+// UIN: 231P058
+// Client.java
+import java.io.*;
+import java.net.*;
+
+public class Client {
+    public static void main(String[] args) {
+        try {
+            Socket socket = new Socket("localhost", 8080);
+            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            BufferedReader userInput = new BufferedReader(new InputStreamReader(System.in));
+
+            // Send client name to server
+            System.out.println("Enter your name:");
+            String name = userInput.readLine();
+            out.println(name);
+
+            // Read and print server response
+            System.out.println(in.readLine());
+
+            socket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
