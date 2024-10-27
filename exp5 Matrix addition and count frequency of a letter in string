@@ -1,0 +1,73 @@
+/* 
+UIN : 231P058 
+ROLL NO : 16 
+EXP5 : Matrix Addition and Count Frequency of a Letter in String 
+*/ public class Exp5PostLab1 
+{ 
+public static void main(String[] args) {         
+int[][] matrix1 = { {1, 2}, {3, 4} };       
+matrix2 = { {5, 6}, {7, 8} };        
+  int[][] 
+ int[][] result 
+= new int[2][2]; 
+for (int i = 0; i < 2; i++) {          
+{             
+k++) {                 
+    result[i][j] = 0;               
+   for (int j = 0; j < 2; j++) 
+  for (int k = 0; k < 2; 
+    result[i][j] += matrix1[i][k] * 
+matrix2[k][j]; 
+} 
+} 
+} 
+for (int i = 0; i < 2; i++) {             
+for (int j = 0; j < 2; j++) { 
+System.out.print(result[i][j] + " "); 
+} 
+System.out.println(); 
+} 
+} 
+} 
+Exp 
+File : Exp5PostLab2.java 
+/* 
+Name : Mohammed Hanzala Khan 
+UIN : 231P058 
+ROLL NO.- 16 
+EXP5 : Matrix Addition and Count Frequency of a Letter in String 
+*/ public class Exp5PostLab2 
+{ 
+public static void main(String[] args) {      
+matrix = { {1, 2, 3}, {4, 5, 6}, {7, 8, 9} };      
+sum = 0; 
+   int[][] 
+   int 
+for (int i = 0; i < 3; i++) { 
+sum += matrix[i][i];  // Adding primary diagonal elements 
+} 
+System.out.println("Sum of diagonal elements: " + sum); 
+} 
+} 
+File: Exp5PostLab3.Java 
+NAME : Mohammed Hanzala Khan 
+UIN : 231P058 
+ROLL NO : 16 
+EXP5 : Matrix Addition and Count Frequency of a Letter in String 
+*/ public class Exp5PostLab3 
+{ 
+File : Exp5PostLab2.java 
+/* 
+public static void main(String[] args) {         
+String input = "Programming is fun!";         
+int vowelCount = 0; 
+String vowels = "AEIOUaeiou"; 
+for (int i = 0; i < input.length(); i++) {           
+(vowels.indexOf(input.charAt(i)) != -1) {                 
+vowelCount++; 
+} 
+} 
+  if 
+System.out.println("Number of vowels: " + vowelCount); 
+} 
+}
