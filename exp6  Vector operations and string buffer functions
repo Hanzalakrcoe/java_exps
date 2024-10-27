@@ -1,0 +1,76 @@
+/* 
+NAME : Mohammed Hanzala Khan 
+UIN : 231P058 
+ROLL NO : 16 
+EXP6 : Vector Operations and String Buffer Functions 
+*/ import 
+java.util.*; 
+public class Exp6PostLab1 { 
+public static void main(String[] args) { 
+Vector<String> students = new Vector<>();     
+= new Scanner(System.in); 
+int choice; 
+do { 
+    Scanner sc 
+System.out.println("1. Add Student Name\n2. Remove Student Name\n3. Display Names\n4. 
+Exit"); 
+choice = sc.nextInt(); 
+sc.nextLine(); // consume newline 
+switch (choice) {                 
+case 1: 
+System.out.println("Enter student name: ");                     
+String name = sc.nextLine();                     
+students.add(name);                   
+  break;               
+  case 2: 
+System.out.println("Enter student name to remove: ");                 
+removeName = sc.nextLine(); 
+students.remove(removeName);                     
+break;             
+    case 3: 
+Enumeration<String> names = students.elements();                     
+System.out.println("Student Names:");                    
+(names.hasMoreElements()) { 
+System.out.println(names.nextElement()); 
+}                     
+break; 
+}  } while (choice != 4);      
+} 
+} 
+File: Exp6PostLab2.java 
+/* 
+   sc.close(); 
+NAME : Mohammed Hanzala Khan 
+UIN : 231P058 
+ROLL NO : 16 
+ while 
+EXP6 : Vector Operations and String Buffer Functions 
+*/ import 
+java.util.*; 
+public class Exp6PostLab2 { 
+    String 
+public static void main(String[] args) { 
+Vector<String> shoppingList = new Vector<>();     
+= new Scanner(System.in); 
+int choice; 
+do { 
+    Scanner sc 
+System.out.println("1. Add Item\n2. Delete Item\n3. Display Items\n4. Exit");           
+sc.nextInt(); 
+sc.nextLine(); // consume newline 
+switch (choice) {                 
+case 1: 
+System.out.println("Enter item name: "); 
+String item = sc.nextLine(); 
+System.out.println("Enter position to insert item: ");                  
+position = sc.nextInt();                     
+shoppingList.add(position, item);                     
+break;             
+    case 2: 
+System.out.println("Enter item name to delete: ");                     
+String removeItem = sc.nextLine();                     
+shoppingList.remove(removeItem);                    
+case 3: 
+System.out.println("Shopping List: " + shoppingList);                     
+}  } while (choice != 4);      
+}}
